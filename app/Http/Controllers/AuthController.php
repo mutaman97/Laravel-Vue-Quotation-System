@@ -6,8 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Http\Resources\UserResource;
-use Validator;
-
+use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
@@ -58,17 +57,13 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        $request->validate([
-            'email' => 'required|string|email',
-            'password' => 'required|string',
-            'remember_me' => 'boolean',
-        ]);
+        $validaton = Validator::make($request->all(), ['email' => 'required|string|email', 'password' => 'required|string', 'remember_me' => 'boolean']);
 
         $credentials = request(['email', 'password']);
         if (!Auth::attempt($credentials)) {
             return response()->json([
-                'message' => 'Unauthorized',
-            ], 401);
+                'error' => $validaton->errors(),
+            ], 422);
         }
 
         $user = $request->user();

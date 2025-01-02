@@ -4,15 +4,15 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Api\V1\Agent\Agent;
+use App\Models\Api\V1\Admin\Admin;
 
-class AgentSeeder extends Seeder
+class AdminSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Agent::factory()->count(10)->create(); // Creates 10 agents
+        Admin::factory()->count(5)->create(); // Creates 5 admin users
     }
 }

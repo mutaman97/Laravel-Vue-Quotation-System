@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Api\V1\Admin;
+namespace App\Http\Requests\Api\V1\Agent;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreProductRequest extends FormRequest
+class UpdateQuotationRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

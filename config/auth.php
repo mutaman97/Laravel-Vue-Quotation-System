@@ -40,6 +40,20 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'api' => [
+            'driver' => 'sanctum', // passport or sanctum if using Sanctum
+            'provider' => 'users',
+        ],
+
+        'admin' => [
+            'driver' => 'sanctum',
+            'provider' => 'admins',
+        ],
+
+        'agent' => [
+            'driver' => 'sanctum',
+            'provider' => 'agents',
+        ],
     ],
 
     /*
@@ -65,10 +79,15 @@ return [
             'model' => env('AUTH_MODEL', App\Models\User::class),
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Api\V1\Admin\Admin::class,  // Admin model for authentication
+        ],
+
+        'agents' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Api\V1\Agent\Agent::class,  // Agent model for authentication
+        ],
     ],
 
     /*
